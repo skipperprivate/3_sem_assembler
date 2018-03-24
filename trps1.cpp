@@ -45,6 +45,20 @@ int dih_search(unsigned short int *m, const  unsigned short int n, const unsigne
 }
 
 
+
+void Sort(int* arr,int n){
+	for(int i=1;i<n;i++){
+		for(int j=i; j>0 && arr[j-1]>arr[j];j--){
+			int tmp=arr[j-1];
+			arr[j-1]=arr[j];
+			arr[j]=tmp;
+		}
+	}
+}
+
+
+
+
  int main()
 {
    const unsigned short int M = 8;
