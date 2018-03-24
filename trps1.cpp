@@ -17,7 +17,7 @@ struct Tm{
 struct Man{
 	unsigned short int kod;
 	string FIO;
-    Tm b_day;
+	Tm b_day;
 };
 
 
@@ -27,18 +27,18 @@ int dih_search(unsigned short int *m, const  unsigned short int n, const unsigne
 	unsigned short int high = 0;
 	unsigned short int mid = 0;
 
-	high = n;
+	high = n-1;
 
 	while (low < high) {
 
-	  mid = round(high / 2);
-	  if (val < m[mid])
-		mid = high;
+	  mid = low + (high - low) / 2;
+	  if (val <= m[mid])
+		high = mid;
 	  else
-		if (val > m[mid])
-		  mid = low;
-		else
-		  return mid;
+		low = mid + 1;
+
+	  if (m[high] == val)
+		return high;
 	}
 
 	return -1;
@@ -47,9 +47,9 @@ int dih_search(unsigned short int *m, const  unsigned short int n, const unsigne
 
  int main()
 {
-   const unsigned short int M = 5;
+   const unsigned short int M = 8;
 
-   unsigned short int mas[M] = {1,2,3,4,5};
+   unsigned short int mas[M] = {1,2,3,4,5,6,7,8};
 
    string test = "jdfjd";
 	Man e;
@@ -71,7 +71,7 @@ int dih_search(unsigned short int *m, const  unsigned short int n, const unsigne
 
 
 	cout<<sizeof(mas)<<"\n";
-	cout<<(5/2)<<"\n";
+	cout<<dih_search(mas,M,3)<<"\n";
 
 	getch();
 
