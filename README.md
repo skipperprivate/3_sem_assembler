@@ -1,2 +1,2 @@
 # 3_sem_assembler
-assembler labs
+assembler and tdps labs
