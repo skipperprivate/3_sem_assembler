@@ -61,36 +61,48 @@ Start:
          jl less
          
          mov AX,A
-         cwd
-         idiv Y         ;A / C
-         mov BX,AX
-         mov AX,A
-         cwd
-         idiv B         ;A / B
-         add AX,BX
+         
+         imul Y     ;A / C
+         
+         imul Y
+         
+         sub AX,B     ;A / B
+         
          jmp continue
          
          ;A < B
          less:
+         
          mov AX,A
-         imul Y
-         imul Y
-         sub AX,B
-         
-         
+         cwd
+
+         idiv Y         ;A / C
+
+         mov BX,AX
+
+         mov AX,A
+
+         cwd
+
+         idiv B         ;A / B
+
+         add AX,BX
+                  
+                  
+                  
          continue:
-       
+                 
          mov M,AX
-
-
+                  
+         
          Invoke dwtoa,M,ADDR ResStr 
-
+         
          Invoke StdOut,ADDR Result 
-
+         
          XOR    EAX,EAX
+         
          Invoke StdOut,ADDR MsgExit
          Invoke StdIn,ADDR inbuf,LengthOf inbuf		
 	
          Invoke ExitProcess,0
          End    Start
-
