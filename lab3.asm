@@ -1,12 +1,3 @@
-; Template for console application
-         .586
-         .MODEL  flat, stdcall
-         OPTION CASEMAP:NONE
-
-Include kernel32.inc
-Include masm32.inc
-
-IncludeLib kernel32.lib
 IncludeLib masm32.lib
 
          .CONST
@@ -56,8 +47,15 @@ Start:
          mov AX,A
          ;mov BX,B
          
+         
+         
+         
+         
+         
+         
+         
          cmp AX,B
-         ;A > B
+         
          jl less
          
          mov AX,A
@@ -73,6 +71,12 @@ Start:
          ;A < B
          less:
          
+         cmp B,0
+         je less1
+         
+         cmp Y,0
+         je less2
+         
          mov AX,A
          cwd
 
@@ -87,18 +91,21 @@ Start:
          idiv B         ;A / B
 
          add AX,BX
-                  
+         jmp continue
+         less2: jmp cont
+         less1: jmp cont
+            
                   
                   
          continue:
                  
-         mov M,AX
-                  
+         mov M,AX                  
          
          Invoke dwtoa,M,ADDR ResStr 
          
          Invoke StdOut,ADDR Result 
-         
+  
+         cont:
          XOR    EAX,EAX
          
          Invoke StdOut,ADDR MsgExit
@@ -106,3 +113,7 @@ Start:
 	
          Invoke ExitProcess,0
          End    Start
+
+
+
+
