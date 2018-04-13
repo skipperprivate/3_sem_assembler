@@ -31,7 +31,8 @@ Start:
          Invoke StdOut,ADDR MsgExit
          Invoke StdOut,ADDR MsgExit
          jmp cont
-         less:Invoke StdOut,ADDR MsgExit        
+         less:Invoke StdOut,ADDR MsgExit  
+         call addiv      
   
   
   cont:

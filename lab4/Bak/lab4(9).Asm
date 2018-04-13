@@ -25,12 +25,16 @@ Start:
 ;    Add you statements
 ;
          cmp B,0
+         cmp AL,AH
+         jl less
          Invoke StdOut,ADDR MsgExit
          Invoke StdOut,ADDR MsgExit
          Invoke StdOut,ADDR MsgExit
-
-        
+         jmp cont
+         less:Invoke StdOut,ADDR MsgExit        
   
+  
+  cont:
          XOR    EAX,EAX
          Invoke StdOut,ADDR MsgExit
          Invoke StdIn,ADDR inbuf,LengthOf inbuf		

@@ -25,14 +25,12 @@ Start:
 ;    Add you statements
 ;
          cmp B,0
-         cmp AL,AH
-         jl less
+         je less
          Invoke StdOut,ADDR MsgExit
          Invoke StdOut,ADDR MsgExit
          Invoke StdOut,ADDR MsgExit
          jmp cont
          less:Invoke StdOut,ADDR MsgExit  
-         call adddiv      
   
   
   cont:

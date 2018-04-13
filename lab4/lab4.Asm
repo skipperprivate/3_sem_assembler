@@ -13,9 +13,14 @@ IncludeLib masm32.lib
 MsgExit  DB    "Press Enter to Exit",0AH,0DH,0
 
          .DATA
-B SWORD 0
-
-A SWORD 1
+         
+A SWORD 0,0,0,0,0,0
+  SWORD 0,0,0,0,0,0
+  SWORD 0,0,0,0,0,0
+  SWORD 0,0,0,0,0,0
+  SWORD 0,0,0,0,0,0
+  
+             
          .DATA?
 inbuf    DB    100 DUP (?)
 
@@ -24,16 +29,6 @@ Start:
 ; 
 ;    Add you statements
 ;
-         cmp B,0
-         je less
-         Invoke StdOut,ADDR MsgExit
-         Invoke StdOut,ADDR MsgExit
-         Invoke StdOut,ADDR MsgExit
-         jmp cont
-         less:jmp cont  
-  
-  
-  cont:
          XOR    EAX,EAX
          Invoke StdOut,ADDR MsgExit
          Invoke StdIn,ADDR inbuf,LengthOf inbuf		

@@ -62,7 +62,7 @@ MilestoneOnTime=2
 MilestoneOnDate=0
 MilestoneOnDateWhen=1
 MilestoneOnDateStatus=0
-MilestoneOnDateDate=30
+MilestoneOnDateDate=9
 MilestoneOnDateTimeYear=2018
 MilestoneOnDateTimeMonth=3
 MilestoneOnDateTimeDate=30
@@ -97,7 +97,7 @@ ProductVer4Range=0
 [Collapse]
 1=
 [Size]
-1=0,0,1103,552,583
+1=0,0,1103,552,547
 [BookMark]
 0=
 1=

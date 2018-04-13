@@ -13,7 +13,7 @@ IncludeLib masm32.lib
 MsgExit  DB    "Press Enter to Exit",0AH,0DH,0
 
          .DATA
-B SWORD 1
+B SWORD 0
 
 A SWORD 1
          .DATA?
@@ -25,14 +25,12 @@ Start:
 ;    Add you statements
 ;
          cmp B,0
-         cmp AL,AH
-         jl less
+         je less
          Invoke StdOut,ADDR MsgExit
          Invoke StdOut,ADDR MsgExit
          Invoke StdOut,ADDR MsgExit
          jmp cont
          less:Invoke StdOut,ADDR MsgExit  
-         call addiv      
   
   
   cont:
