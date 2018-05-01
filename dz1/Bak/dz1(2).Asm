@@ -11,20 +11,17 @@ IncludeLib masm32.lib
 
          .CONST
 MsgExit  DB    "Press Enter to Exit",0AH,0DH,0
-Str      DB    'a c b ds re ew asf hg fr yu iii q'
+
          .DATA
 
          .DATA?
 inbuf    DB    100 DUP (?)
-result   DB    60 DUP ('')
 
          .CODE
 Start:
-         cld
-         lea edi,str
-         mov al,' '
-         mov ebx,
-
+; 
+;    Add you statements
+;
          XOR    EAX,EAX
          Invoke StdOut,ADDR MsgExit
          Invoke StdIn,ADDR inbuf,LengthOf inbuf		

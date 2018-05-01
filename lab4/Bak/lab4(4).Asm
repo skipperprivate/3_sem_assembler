@@ -18,10 +18,14 @@ A SWORD 0,0,0,0,0,0
   SWORD 0,0,0,0,0,0
   SWORD 0,0,0,0,0,0
   
+mas SWORD 0,0,0,0,0,0  
+  
 ROW SWORD 3
 COL SWORD 6
 I SWORD 1
 J SWORD 1
+MAX SWORD 0
+count      sword    5
 
 new_str    DB 13,10,0
 place  DB ' '             
@@ -29,10 +33,15 @@ ResStr DB 16 DUP (' '),0
 ResStrOut DB 6 DUP (' '),0  
 RequestA DB "Input matrix 5x6: ",0AH,0DH,0 
 matrixout DB "see the matrix",13,10,0
+enter_row DB "enter number of row<5",13,10,0
               
          .DATA?
 inbuf    DB    100 DUP (?)
-
+r1      SWORD    ?
+pos      sword   ?
+tmp      SWORD   ?
+K      SWORD   ?
+M      SWORD   ?
          .CODE
 Start:  
          INVOKE StdOut, ADDR RequestA
@@ -50,6 +59,110 @@ Start:
             
             loop rowcycle 
        
+     
+     
+     ;enter number
+     Invoke StdOut, ADDR enter_row
+     Invoke StdIn,ADDR inbuf,LengthOf inbuf
+     Invoke StripLF,ADDR inbuf 
+     Invoke atol,ADDR inbuf
+     mov DWORD PTR r1,EAX
+     sub r1,1
+     
+     
+     
+     cmp r1,1
+     jl less
+     ;sorting
+     mov EBX,0
+     mov ECX,DWORD PTR r1
+     cycle1:
+            push ECX
+            mov ECX,6
+            cycle2:
+                    push ECX
+                    pop ECX
+                    inc EBX
+            loop cycle2
+            pop ECX
+            push ECX
+            pop ECX
+     loop cycle1     
+     jmp continue
+     less: mov EBX,0
+     
+     continue:
+     
+     
+     ;filling
+     mov ECX,6
+     mov EDX,0
+     f:
+        push ECX
+        mov AX,A[EBX*2]
+        mov mas[EDX*2],AX
+        inc EDX
+        inc EBX
+        pop ECX
+     loop f
+     
+     
+     
+     ;SORTING EBANIY MASSIV
+     mov BX,1
+     cycle4:cmp BX,5
+            jg continue1_1
+            
+            mov EDX,0
+            mov CX,0
+            ;;;;;;;;;
+            mov AX,mas[EDX*2]
+            mov dword ptr pos,EDX
+            ;;;;;
+            cycle5:cmp CX,count
+                   jg continue2
+                   cmp AX,mas[EDX*2+2]
+                   jge next2
+                     mov AX,mas[EDX*2+2]
+                     mov dword ptr pos,EDX
+                     add pos,1
+                   next2:
+                   inc EDX
+                   inc CX
+                   jmp cycle5 
+            
+            continue2:
+            
+            mov MAX,AX
+            mov ECX,dword ptr pos
+            mov AX,mas[EDX*2]
+            mov mas[ECX*2],AX
+            mov AX,MAX
+            mov mas[EDX*2],AX
+            
+            
+            inc BX
+            sub count,1
+            jmp cycle4
+            
+     continue1_1:
+     
+     
+     
+     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+     
+     
+     mov ECX,6
+     mov EBX,0
+     m:
+        push ECX
+        Invoke dwtoa,mas[EBX*2], ADDR ResStrOut    
+                        Invoke StdOut, ADDR ResStrOut           
+                        Invoke StdOut, ADDR place 
+        inc EBX
+        pop ECX
+     loop m
+     
        
      Invoke StdOut, ADDR matrixout  
      ;output  
@@ -65,7 +178,7 @@ Start:
                         push ECX                                
                         Invoke dwtoa,A[EBX*2], ADDR ResStrOut    
                         Invoke StdOut, ADDR ResStrOut           
-                        Invoke StdOut, ADDR place              
+                        Invoke StdOut, ADDR place            
                         pop ECX
 
                    inc EBX

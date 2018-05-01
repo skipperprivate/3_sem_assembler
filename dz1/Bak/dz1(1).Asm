@@ -20,10 +20,8 @@ result   DB    60 DUP ('')
 
          .CODE
 Start:
+
          cld
-         lea edi,str
-         mov al,' '
-         mov ebx,
 
          XOR    EAX,EAX
          Invoke StdOut,ADDR MsgExit
