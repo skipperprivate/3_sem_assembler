@@ -11,7 +11,7 @@ IncludeLib masm32.lib
 
          .CONST
 MsgExit  DB    "Press Enter to Exit",0AH,0DH,0
-Str      db    'a c b ds re ew asf hg fr yu iii q'
+Str      DB    "a c b ds re ew asf hg fr yu iii q",0   ;данная строка
          .DATA
 
          .DATA?
