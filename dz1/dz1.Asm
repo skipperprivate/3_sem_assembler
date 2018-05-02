@@ -10,20 +10,25 @@ IncludeLib kernel32.lib
 IncludeLib masm32.lib
 
          .CONST
-MsgExit  DB    "Press Enter to Exit",0AH,0DH,0
-Str      DB    'a c b ds re ew asf hg fr yu iii q'
+MsgExit   DB     13,10,"Press Enter to Exit",0AH,0DH,0
+
+Enter_Msg DB    "Your string",0AH,0DH,0                 
+
+mystr     DB    "ab fd gsa re as ds vf ggg s sxs re ui",0  ; строка изначальная
+
+res       DB     0AH,0DH,'Chislo razlichnix slov ',0AH,0DH,0  
          .DATA
 
          .DATA?
 inbuf    DB    100 DUP (?)
-result   DB    60 DUP ('')
+rezstr   db      0AH,0DH,22 DUP (' '),0AH,0DH,0
 
          .CODE
 Start:
          cld
-         lea edi,str
+         lea edi,mystr
          mov al,' '
-         mov ebx,
+         ;mov ebx,
 
          XOR    EAX,EAX
          Invoke StdOut,ADDR MsgExit

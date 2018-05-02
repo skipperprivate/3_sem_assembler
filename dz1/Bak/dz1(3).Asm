@@ -21,7 +21,7 @@ res       DB     0AH,0DH,'Chislo razlichnix slov ',0AH,0DH,0
 
          .DATA?
 inbuf    DB    100 DUP (?)
-rezstr   db      0AH,0DH,22 DUP (' '),0AH,0DH,0
+result   db    60 DUP ('')
 
          .CODE
 Start:
