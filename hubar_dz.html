@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset ="utf-8">
+      <title>DZ</title>
+    	<script>
+        var number = [];
+        var i = 2;
+        var smallerThan2 = false;
+
+        function sm2(){
+          smallerThan2 = true
+          var newElem=document.getElementById('table');
+          var newRow=newElem.insertRow(i);
+          var butElem=document.getElementById('da');
+          butElem.disabled = true;
+          var butElem=document.getElementById('net');
+          butElem.disabled = true;
+          var newCell = newRow.insertCell(0);
+          newCell.width="200";
+          newCell.innerHTML="Есть ли остаток от деления на два?";
+
+          var newCell = newRow.insertCell(1);
+          var button = document.createElement("input");
+          button.type = "button";
+          button.value ="Да";
+          newCell.appendChild(button);
+          button.onclick = function result1(){
+            result.innerHTML="Вы загадали число 1";
+            document.getElementById('refresh').style.removeProperty( 'display' );
+          }
+
+          var newCell = newRow.insertCell(2);
+          var button = document.createElement("input");
+          button.type = "button";
+          button.value ="Нет";
+          newCell.appendChild(button);
+          button.onclick = function result0(){
+            result.innerHTML="Вы загадали число 0";
+            document.getElementById('refresh').style.removeProperty( 'display' );
+          }
+        }
+        function askAboutQuotient(){
+          var newElem=document.getElementById('table');
+          var newRow=newElem.insertRow(i);
+          i++;
+
+          var newCell = newRow.insertCell(0);
+          newCell.width="200";
+          newCell.innerHTML="Равно ли частное 1?";
+
+          var newCell = newRow.insertCell(1);
+          var button = document.createElement("input");
+          button.type = "button";
+          button.value ="Да";
+          newCell.appendChild(button);
+          button.onclick = function push1(){
+            button1.disabled = true;
+            button.disabled = true;
+            number.push(1);
+            var newCell = newRow.insertCell(3);
+            newCell.innerHTML = "1";
+            sum();
+          }
+
+          var newCell = newRow.insertCell(2);
+          var button1 = document.createElement("input");
+          button1.type = "button";
+          button1.value ="Нет";
+          newCell.appendChild(button1);
+          button1.onclick = function push2(){
+            button1.disabled = true;
+            button.disabled = true;
+            askAboutMod();
+          }
+
+        }
+        function askAboutMod(){
+          var newElem=document.getElementById('table');
+          var newRow=newElem.insertRow(i);
+
+          i++;
+          var newCell = newRow.insertCell(0);
+          newCell.width="200";
+          newCell.innerHTML="Есть ли остаток от деления на два?";
+
+          var newCell = newRow.insertCell(1);
+          var button = document.createElement("input");
+          button.type = "button";
+          button.value ="Да";
+          newCell.appendChild(button);
+          button.onclick = function push1(){
+            number.push(1);
+            button1.disabled = true;
+            button.disabled = true;
+            var newCell = newRow.insertCell(3);
+            newCell.innerHTML = "1";
+            askAboutQuotient();
+          }
+
+          var newCell = newRow.insertCell(2);
+          var button1 = document.createElement("input");
+          button1.type = "button";
+          button1.value ="Нет";
+          newCell.appendChild(button1);
+          button1.onclick = function push2(){
+            number.push(0);
+            button1.disabled = true;
+            button.disabled = true;
+            var newCell = newRow.insertCell(3);
+            newCell.innerHTML = "0";
+            askAboutQuotient();
+          }
+
+        }
+        function sum(){
+          var res = 0;
+          for (var j=0;j<number.length;j++){
+            res += number[j]*Math.pow(2.0, j);
+
+          }
+          result.innerHTML="Вы загадали число " + res;
+          document.getElementById('refresh').style.removeProperty( 'display' );
+        }
+
+      </script>
+	  </head>
+	<body>
+        <table id="table" border="1">
+          <caption><br>Вычисления наугад</caption>
+          <tr>
+            <th>Вопрос</th>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>Является ли число меньше 1?</td>
+            <td><input type="button" id="da" value="Да" OnClick="sm2()"></td>
+            <td><input type="button" id="net" value="Нет" OnClick="askAboutMod()"></td>
+          </tr>
+        </table>
+        <br>
+
+        <div id="result"></div>
+        <div id="refresh" style="display: none;"><input type="button" value="Угадать еще раз" onClick="location.href=location.href" style="height:200px;width:200px">
+	</body><div>
+</html>
