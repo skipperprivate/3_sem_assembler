@@ -31,6 +31,7 @@ Start:
          
          lea EDI,mystr
          lea ESI,rezstr
+         mov al,' '
          
          mov EBX,12
          cld

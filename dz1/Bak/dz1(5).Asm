@@ -18,13 +18,18 @@ mystr     DB    "ab fd gsa re as ds vf ggg s sxs re ui",0  ; строка изначальная
 
 res       DB     0AH,0DH,'Chislo razlichnix slov ',0AH,0DH,0  
          .DATA
-
+Perenos     DB    13,10
          .DATA?
 inbuf    DB    100 DUP (?)
 rezstr   db      0AH,0DH,22 DUP (' '),0AH,0DH,0
 
          .CODE
 Start:
+         Invoke StdOut,ADDR Enter_Msg
+         Invoke StdOut,ADDR mystr
+         Invoke StdOut,ADDR Perenos
+         
+         
          cld
          lea edi,mystr
          mov al,' '

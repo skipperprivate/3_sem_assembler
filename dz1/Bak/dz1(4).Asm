@@ -29,11 +29,11 @@ Start:
          Invoke StdOut,ADDR mystr
          Invoke StdOut,ADDR Perenos
          
+         lea EDI,[mystr-1]
+         les ESI,[mystr-1]
          
+         mov EBX,12
          cld
-         lea edi,mystr
-         mov al,' '
-         ;mov ebx,
 
          XOR    EAX,EAX
          Invoke StdOut,ADDR MsgExit

@@ -30,7 +30,7 @@ Start:
          Invoke StdOut,ADDR Perenos
          
          lea EDI,mystr
-         les ESI,rezstr
+         lea ESI,rezstr
          
          mov EBX,12
          cld

@@ -10,8 +10,13 @@ IncludeLib kernel32.lib
 IncludeLib masm32.lib
 
          .CONST
-MsgExit  DB    "Press Enter to Exit",0AH,0DH,0
-Str      DB    "a c b ds re ew asf hg fr yu iii q",0   ;данная строка
+MsgExit   DB     13,10,"Press Enter to Exit",0AH,0DH,0
+
+Enter_Msg DB    "Your string",0AH,0DH,0                 
+
+mystr     DB    "sdsdsdsd ghjfklmn xcvbnmzx rtyuiopq",0  ; ?????? ?????? ?? ???????
+
+res       DB     0AH,0DH,'Chislo razlichnix slov ',0AH,0DH,0  
          .DATA
 
          .DATA?
