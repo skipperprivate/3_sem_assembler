@@ -6,3 +6,4 @@ https://habrahabr.ru/post/274017/
 https://prog-cpp.ru/asm-operands/
 exam:
 http://www.miu.by/rus/kaf_ep/kaf_download/21317_115157518.pdf
+https://studopedia.ru/12_82090_osnovi-yazika-Assembler.html
