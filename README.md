@@ -1,4 +1,5 @@
 # 3_sem_assembler
-#<a name="3 sem"></a>3 sem
+*[3 semestr][3_sem]
+#<a name="3_sem"></a>3 sem
 *assembler and tdps labs
 *else
